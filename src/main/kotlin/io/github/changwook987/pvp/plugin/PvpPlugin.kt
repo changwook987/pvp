@@ -40,9 +40,7 @@ class PvpPlugin : JavaPlugin() {
 
         addRecipe()
 
-        kommand {
-            PvpCommand.register(this@PvpPlugin, this)
-        }
+        kommand { PvpCommand.register(this@PvpPlugin, this) }
     }
 
     private fun addRecipe() {

@@ -27,7 +27,7 @@ object StaticItems {
         }
     }
 
-    val sharpnessBook = ItemStack(Material.ENCHANTED_BOOK).apply {
+    private val sharpnessBook = ItemStack(Material.ENCHANTED_BOOK).apply {
         itemMeta = (itemMeta as EnchantmentStorageMeta).apply {
             addStoredEnchant(Enchantment.DAMAGE_ALL, 3, false)
         }
