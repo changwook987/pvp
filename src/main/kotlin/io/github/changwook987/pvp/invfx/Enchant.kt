@@ -8,8 +8,8 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.EnchantmentStorageMeta
 
-object PvpInvfx {
-    fun createEnchantFrame(items: Collection<ItemStack>): InvFrame {
+object Enchant {
+    fun create(items: Collection<ItemStack>): InvFrame {
         return InvFX.frame(items.size / 9 + 1, text("인챈트")) {
             list(0, 0, 9, items.size / 9 + 1, true, { items.toList() }) {
                 transform { it }
@@ -32,7 +32,7 @@ object PvpInvfx {
                     event.whoClicked.apply {
                         closeInventory()
                         if (this is Player) {
-                            openFrame(createEnchantFrame(items.minus(a)))
+                            openFrame(create(items.minus(a)))
                         }
                     }
                 }

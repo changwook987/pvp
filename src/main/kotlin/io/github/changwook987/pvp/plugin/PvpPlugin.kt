@@ -7,13 +7,17 @@ import io.github.changwook987.pvp.StaticItems.quickSmeltRecipe
 import io.github.changwook987.pvp.StaticItems.sharpnessBookRecipe
 import io.github.changwook987.pvp.command.PvpCommand
 import io.github.monun.kommand.kommand
-import org.bukkit.*
+import org.bukkit.GameRule
+import org.bukkit.World
+import org.bukkit.WorldCreator
+import org.bukkit.WorldType
 import org.bukkit.inventory.FurnaceRecipe
 import org.bukkit.inventory.RecipeChoice
 import org.bukkit.plugin.java.JavaPlugin
 
 class PvpPlugin : JavaPlugin() {
     override fun onEnable() {
+        EventListener(this).register()
         for (world in server.worlds) {
             world.worldBorder.apply {
                 setCenter(0.0, 0.0)
@@ -61,5 +65,7 @@ class PvpPlugin : JavaPlugin() {
             }
         }
     }
+
+    private fun EventListener.register() = server.pluginManager.registerEvents(this, this@PvpPlugin)
 }
 

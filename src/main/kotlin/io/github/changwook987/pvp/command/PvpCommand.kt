@@ -1,6 +1,6 @@
 package io.github.changwook987.pvp.command
 
-import io.github.changwook987.pvp.invfx.PvpInvfx
+import io.github.changwook987.pvp.invfx.Enchant
 import io.github.monun.invfx.openFrame
 import io.github.monun.kommand.PluginKommand
 import net.kyori.adventure.text.Component.text
@@ -57,7 +57,7 @@ object PvpCommand {
                             }
                         }
 
-                        player.openFrame(PvpInvfx.createEnchantFrame(enchantBooks))
+                        player.openFrame(Enchant.create(enchantBooks))
                     } else {
                         player.sendMessage("강화할 아이템을 들고 써라")
                     }
