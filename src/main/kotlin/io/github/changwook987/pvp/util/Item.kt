@@ -78,26 +78,32 @@ val Material.isArmor: Boolean
         else -> false
     }
 
-fun ItemStack.applyDamage() {
-    val im = (itemMeta ?: return) as Damageable
+//return true at item is Break
+fun ItemStack.applyDamage(amount: Int = 1): Boolean {
+    require(amount >= 0)
+    val im = (itemMeta ?: return false) as Damageable
 
     val durabilityLevel = im.getEnchantLevel(Enchantment.DURABILITY)
 
-    itemMeta = im.apply {
-        val chance = if (type.isArmor) {
-            60 + (100 / durabilityLevel.plus(1.0))
-        } else {
-            (100 / durabilityLevel.plus(1.0) / 100)
-        }
+    val chance = if (type.isArmor) {
+        60 + (100 / durabilityLevel.plus(1.0))
+    } else {
+        (100 / durabilityLevel.plus(1.0) / 100)
+    }
 
-        if (chance >= Math.random()) {
-            damage++
+    repeat(amount) {
+        itemMeta = im.apply {
+            if (chance >= Math.random()) {
+                damage++
+            }
         }
     }
 
-    if (isBroken) {
-        amount = 0
-
+    return if (isBroken) {
+        this.amount = 0
+        true
+    } else {
+        false
     }
 }
 

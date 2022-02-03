@@ -1,7 +1,6 @@
 package io.github.changwook987.pvp.plugin
 
 import io.github.changwook987.pvp.util.applyDamage
-import io.github.changwook987.pvp.util.isBroken
 import io.github.changwook987.pvp.util.isOre
 import io.github.changwook987.pvp.util.isPickaxe
 import org.bukkit.Location
@@ -45,16 +44,16 @@ class EventListener(private val plugin: JavaPlugin) : Listener {
                     val queue: Queue<Location> = LinkedList(listOf(event.block.location))
                     val firstType = event.block.type
 
-                    while (queue.isNotEmpty() && !item.isBroken) {
+                    while (queue.isNotEmpty()) {
                         val block = queue.poll().block
 
                         block.breakNaturally(item)
 
                         item.applyDamage()
 
-                        queue.addAll(
-                            block.getNearbyBlocks().filter { it.type == firstType && it.location !in queue }
-                                .run { List(size) { get(it).location } })
+                        queue += block.getNearbyBlocks()
+                            .filter { it.type == firstType && it.location !in queue }
+                            .run { List(size) { get(it).location } }
                     }
                 }
             }.runTask(plugin)
