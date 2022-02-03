@@ -7,7 +7,7 @@ import org.bukkit.inventory.meta.Damageable
 
 val Material.isOre: Boolean
     get() = when (this) {
-        //<editor-fold desc="Ores">
+        //<editor-fold defaultstate="collapsed" desc="Ores">
         Material.COPPER_ORE,
         Material.COAL_ORE,
         Material.GOLD_ORE,
@@ -31,7 +31,7 @@ val Material.isOre: Boolean
     }
 val Material.isPickaxe: Boolean
     get() = when (this) {
-        //<editor-fold desc="Pickaxes">
+        //<editor-fold defaultstate="collapsed" desc="Pickaxes">
         Material.DIAMOND_PICKAXE,
         Material.IRON_PICKAXE,
         Material.GOLDEN_PICKAXE,
@@ -44,7 +44,7 @@ val Material.isPickaxe: Boolean
 
 val Material.isArmor: Boolean
     get() = when (this) {
-        //<editor-fold desc="Armors">
+        //<editor-fold defaultstate="collapsed" desc="Armors">
         Material.DIAMOND_HELMET,
         Material.GOLDEN_HELMET,
         Material.IRON_HELMET,
