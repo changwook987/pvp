@@ -1,4 +1,4 @@
-package io.github.changwook987.pvp.plugin
+package io.github.changwook987.pvp.eventListener
 
 import io.github.changwook987.pvp.util.applyDamage
 import io.github.changwook987.pvp.util.isOre
@@ -12,8 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitRunnable
 import java.util.*
 
-class EventListener(private val plugin: JavaPlugin) : Listener {
-    private val logger = plugin.logger
+class ChopOre(private val plugin: JavaPlugin) : Listener {
 
     //chop ore : 클릭 한 번에 광물이 사라진다?
     @EventHandler(ignoreCancelled = false)
